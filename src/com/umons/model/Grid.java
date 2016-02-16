@@ -18,49 +18,33 @@ public class Grid {
 	
 	public void fillGrid() {
 		//Rempli la grille avec les fentes et les cases
-		for (int i = 0; i < plateau.length; i+=2)
-			for (int j = 0; j < plateau.length; i+=2) 
+		for (int i = 0; i < plateau.length; i+=2) {
+			for (int j = 0; j < plateau.length; j+=2) {
 				plateau[i][j] = new Item(1);
-		for (int i = 0; i < plateau.length; i+=2)
-			for (int j = 1; j < plateau.length; i+=2) 
-				plateau[i][j] = new Item(2);
-		for (int i = 1; i < plateau.length; i+=2)
-			for (int j = 0; j < plateau.length; j++)
-				plateau[i][j] = new Item(2);
-	}
-	
-	/*
-	TEST D'UN AFFICHAGE MAIS NE FONCTIONNE PAS
-
-	Bug #2 Reference null lors de l'écécution de Main.java
-
-	public String afficheGrid() {
-	  String s = "";
-	  //essaye d'afficher une grille vide (ne gère pas le cas ou la case possède un pion)
-	  for (int i = 0; i < plateau.length; i+=2) {
-			for (int j = 0; j < plateau.length; j++) {
-				if (plateau[i][j].getLen() == 1){
-					s += "O";
-				}else{
-					s+= "|";
-				}
 			}
-			s += "________";
-	  }
-	  return s;
+		}
+		for (int i = 0; i < plateau.length; i+=2) {
+			for (int j = 1; j < plateau.length; j+=2) { 
+				plateau[i][j] = new Item(2);
+			}
+		}
+		for (int i = 1; i < plateau.length; i+=2) {
+			for (int j = 0; j < plateau.length; j++) {
+				plateau[i][j] = new Item(2);
+			}
+		}
 	}
 	
-	public void afficheGrid2(){
+	public void afficheGrid(){
 		for (int i = 0; i < plateau.length; i+=2) {
 			for (int j = 0; j < plateau.length; j++) {
 				if (plateau[i][j].getLen() == 1){
-					System.out.println("O");
+					System.out.print("O");
 				}else{
-					System.out.println("|");
+					System.out.print("|");
 				}
 			}
-			System.out.println("________");
+			System.out.print("\n------------------\n");
 	  }
 	}
-	*/
 }
