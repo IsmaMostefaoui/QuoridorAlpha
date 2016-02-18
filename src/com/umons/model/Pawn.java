@@ -46,11 +46,8 @@ public class Pawn {
 		 * Mutateur de Pawn, change la position du pion.
 		 * @param x nouvelle coordonnée en x du pion
 		 * @param y nouvelle coordonnée en y du pion
+		 *
 		 */
-		
-		
-		//if (posX-x > 1){
-			//return 
 		}
 	}
 	
