@@ -1,5 +1,5 @@
 package com.umons.model;
-//test branch robin182
+
 public class Grid {
 
 	private Item[][] plateau;
@@ -44,7 +44,11 @@ public class Grid {
 					System.out.print("|");
 				}
 			}
+		if (i < 16){ 
+			// Ajout de ce 'if' pour que la grille ne se finisse pas par des murs (dans l'affichage)
 			System.out.print("\n------------------\n");
+		}
 	  }
 	}
+	
 }
