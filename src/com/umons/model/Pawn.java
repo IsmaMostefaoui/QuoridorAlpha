@@ -6,8 +6,6 @@ public class Pawn {
 	private int posY;
 	private int posX;
 	
-	
-	
 	public Pawn(int posX,int posY){
 		/**
 		 * Constructeur de le classe Pawn 
@@ -21,8 +19,8 @@ public class Pawn {
 		/**
 		 * Constructeur par défaut de la classe Pawn, initialise x = 7 et y = 16
 		 */
-		this.posX = 7;
-		this.posY = 16;
+		this.posX = 8;
+		this.posY = 17;//
 	}
 		
 	public int getY() {

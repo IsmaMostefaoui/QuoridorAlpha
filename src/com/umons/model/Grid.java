@@ -3,6 +3,7 @@ package com.umons.model;
 public class Grid {
 
 	private Item[][] plateau;
+	public Pawn pion = new Pawn();
 	
 	public Grid() {
 		//CONSTRUCTEUR PAR DEFAUT
@@ -40,6 +41,10 @@ public class Grid {
 			for (int j = 0; j < plateau.length; j++) {
 				if (plateau[i][j].getLen() == 1){
 					System.out.print("O");
+					//Affiche l'emplacement du pion #bug3
+				}
+				else if (pion.getY() == i & pion.getX() == j) {
+					System.out.print("P");
 				}else{
 					System.out.print("|");
 				}
