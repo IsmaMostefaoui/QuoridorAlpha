@@ -3,7 +3,6 @@ package com.umons.model;
 public class Grid {
 
 	private Item[][] plateau;
-	
 	public Grid() {
 		//CONSTRUCTEUR PAR DEFAUT
 		//Mode normal, grille 9x9(case)
@@ -35,16 +34,18 @@ public class Grid {
 		}
 	}
 	
+
+
 	public void afficheGrid(){
 		for (int i = 0; i < plateau.length; i+=2) {
 			for (int j = 0; j < plateau.length; j++) {
-				if (plateau[i][j].getLen() == 1){
+				if (plateau[i][j].getLen() == 1){ // si on tombe sur une case
 					System.out.print("O");
 				}else{
-					System.out.print("|");
+					System.out.print(" "); // si on tombe sur une fente
 				}
 			}
-			System.out.print("\n------------------\n");
+			System.out.print("\n                 \n");
 	  }
 	}
 }
