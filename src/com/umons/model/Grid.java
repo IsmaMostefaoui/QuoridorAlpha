@@ -3,11 +3,8 @@ package com.umons.model;
 public class Grid {
 
 	private Item[][] plateau;
-<<<<<<< HEAD
-=======
 	public Pawn pion = new Pawn();
 	
->>>>>>> 5ff4f167fac9dc5e59005e9d92b5db8421838efe
 	public Grid() {
 		//CONSTRUCTEUR PAR DEFAUT
 		//Mode normal, grille 9x9(case)
