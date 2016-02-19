@@ -34,8 +34,6 @@ public class Grid {
 			}
 		}
 	}
-	
-
 
 	public void afficheGrid(Player joueur1, Player joueur2){
 		for (int i = 0; i < plateau.length; i+=2) {
@@ -54,4 +52,11 @@ public class Grid {
 		}
 	}
 	
+	public void setItemInGrid(int i, int j, boolean full) {
+		/**
+		 * @param la position (i, j) de l'item a modifier
+		 * @param le caractere rempli de la case associe a la position (i, j)
+		 */
+		plateau[i][j].setFull(full);
+	}
 }
