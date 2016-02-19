@@ -15,12 +15,22 @@ public class Pawn {
 		this.posX = posX;
 		this.posY = posY;
 	}
-	public Pawn() {
+	public Pawn(int number) {
 		/**
-		 * Constructeur par défaut de la classe Pawn, initialise x = 7 et y = 16
+		 * Constructeur par défaut de la classe Pawn
+		 * @param le numero du joueur (initialisera en fonction du joueur 1 ou 2)
+		 * @param place le pion au centre si pas de number valide
 		 */
+		//La grille comporte 17 case mais on commence à 0 donc (0 -> 16)
 		this.posX = 8;
-		this.posY = 17;//
+		if (number == 1) {
+			this.posY = 16;
+		}else if (number == 2){
+			this.posY = 0;
+		}else {
+			//Si pas 1 ou 2, alors on le place au mileu
+			this.posY = 8;
+		}
 	}
 		
 	public int getY() {
@@ -34,17 +44,15 @@ public class Pawn {
 	public int getX(){
 		/**
 		 * Accesseur
-		 * @return la position en  du Pion (colonne)
+		 * @return la position du Pion (colonne)
 		 */
 		return posX;
 	}
 	
-	public void move(int x) {
+	public void move(int x, int y) {
 		/**
 		 * Mutateur de Pawn, change la position du pion.
-		 * @param x nouvelle coordonnée en x du pion
-		 * @param y nouvelle coordonnée en y du pion
-		 *
+		 * @param bouge le pion en coordonnées (x, y)
 		 */
 	}
 }

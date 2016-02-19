@@ -3,7 +3,6 @@ package com.umons.model;
 public class Grid {
 
 	private Item[][] plateau;
-	public Pawn pion = new Pawn();
 	
 	public Grid() {
 		//CONSTRUCTEUR PAR DEFAUT
@@ -38,25 +37,21 @@ public class Grid {
 	
 
 
-	public void afficheGrid(){
+	public void afficheGrid(Player joueur1, Player joueur2){
 		for (int i = 0; i < plateau.length; i+=2) {
 			for (int j = 0; j < plateau.length; j++) {
-				if (plateau[i][j].getLen() == 1){ // si on tombe sur une case
+				if (joueur1.getPawn().getY()== i && joueur1.getPawn().getX() == j) {
+					System.out.print("1"); //Fix bug #3 (voir classe Pawn)
+				}else if (joueur2.getPawn().getY() == i && joueur2.getPawn().getX() == j){
+					System.out.print("2");
+				}else if (plateau[i][j].getLen() == 1){ // si on tombe sur une case
 					System.out.print("O");
-					//Affiche l'emplacement du pion #bug3
-				}
-				else if (pion.getY() == i & pion.getX() == j) {
-					System.out.print("P");
 				}else{
 					System.out.print(" "); // si on tombe sur une fente
 				}
 			}
 			System.out.print("\n                 \n");
-		if (i < 16){ 
-			// Ajout de ce 'if' pour que la grille ne se finisse pas par des murs (dans l'affichage)
-			System.out.print("\n------------------\n");
 		}
-	  }
 	}
 	
 }
