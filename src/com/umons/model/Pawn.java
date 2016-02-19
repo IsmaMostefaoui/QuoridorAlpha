@@ -49,10 +49,26 @@ public class Pawn {
 		return posX;
 	}
 	
-	public void move(int x, int y) {
+	public void move(String direction) {
 		/**
-		 * Mutateur de Pawn, change la position du pion.
-		 * @param bouge le pion en coordonnées (x, y)
+		 * Mutateur de Pawn, deplace pion.
+		 * @param bouge le pion de une case en fonction de la direction
+		 * @param ouest, est, nord, sud
 		 */
+		//On verra ça plus tard, en gros, ce sont des enchainement de else if plus lisible
+		switch (direction) {
+		case "nord":
+			this.posY += 2;
+			break;
+		case "ouest":
+			this.posX -= 2;
+			break;
+		case "est":
+			this.posX += 2;
+			break;
+		case "sud":
+			this.posY -= 2;
+			break;
+		}
 	}
 }
