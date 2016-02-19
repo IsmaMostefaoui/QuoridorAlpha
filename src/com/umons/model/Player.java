@@ -6,12 +6,12 @@ public class Player {
 	private Wall wall;
 	private Pawn pion;
 	
-	public Player(int number) {
+	public Player(int number, Grid grid) {
 		/**
 		 * @param number est le "numero" du joueur (joueur 1 ou 2)
 		 **/
 		numberOfWall = 10;
-		pion = new Pawn(number);
+		pion = new Pawn(number, grid);
 		wall = new Wall();
 	}
 	
