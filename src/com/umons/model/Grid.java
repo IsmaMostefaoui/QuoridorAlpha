@@ -36,25 +36,31 @@ public class Grid {
 	}
 
 	public void afficheGrid(Player joueur1, Player joueur2){
-		for (int i = 0; i < plateau.length; i+=2) {
+		for (int i = 0; i < plateau.length; i++) {
 			for (int j = 0; j < plateau.length; j++) {
-				if (joueur1.getPawn().getY()== i && joueur1.getPawn().getX() == j) {
-					System.out.print("1"); //Fix bug #3 (voir classe Pawn)
-				}else if (joueur2.getPawn().getY() == i && joueur2.getPawn().getX() == j){
-					System.out.print("2");
-				}else if (plateau[i][j].getLen() == 1){ // si on tombe sur une case
+				if (plateau[i][j].getFull()) {
+					if (joueur1.getPawn().getX() == j && joueur1.getPawn().getY() == i) {
+						System.out.print("1");
+					}else if (joueur2.getPawn().getX() == j && joueur2.getPawn().getY() == i) {
+						System.out.print("2");
+					}else {
+						System.out.print("X");
+					}
+				}else if (plateau[i][j].getLen() == 1) {
 					System.out.print("O");
-				}else{
-					System.out.print(" "); // si on tombe sur une fente
+				}else {
+					System.out.print(" ");
 				}
 			}
-			System.out.print("\n                 \n");
+			System.out.println();
 		}
 	}
 	
 	public void setItemInGrid(int i, int j, boolean full) {
 		/**
+		 * Rempli ou non  la case
 		 * @param la position (i, j) de l'item a modifier
+		 * @param i est la ligne et j la colonne (ATTENTION, a ne pas confondre avec (x, y)
 		 * @param le caractere rempli de la case associe a la position (i, j)
 		 */
 		plateau[i][j].setFull(full);
