@@ -33,6 +33,9 @@ public class Pawn {
 			this.posY = 8;
 		}
 		//connection avec la case
+		//Rempli la case du joueur 2
+		grid.setItemInGrid(0, 8, true);
+		//Rempli la case du joueur 1
 		grid.setItemInGrid(16, 8, true);
 	}
 		
@@ -63,23 +66,23 @@ public class Pawn {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
 		case "nord":
 			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posX += 2;
+			this.posY -= 2;
 			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "ouest":
 			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posY -= 2;
+			this.posX -= 2;
 			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "est":
 			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posY += 2;
+			this.posX += 2;
 			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "sud":
-			grid.setItemInGrid(this.posX, this.posY, false);
-			this.posX -= 2;
-			grid.setItemInGrid(this.posX, this.posY, true);
+			grid.setItemInGrid(this.posY, this.posX, false);
+			this.posY += 2;
+			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		}
 	}
