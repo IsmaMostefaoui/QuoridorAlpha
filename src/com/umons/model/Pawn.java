@@ -18,9 +18,9 @@ public class Pawn {
 	public Pawn(int number, Grid grid) {
 		/**
 		 * Constructeur par défaut de la classe Pawn
+		 * connecte le pion à l'item(1)(la case)
 		 * @param le numero du joueur (initialisera en fonction du joueur 1 ou 2)
 		 * @param la grille sur laquelle il sera pose (car besoin de remplir la case)
-		 * @throw connecte le pion à l'item(1)(la case)
 		 */
 		//La grille comporte 17 case mais on commence à 0 donc (0 -> 16)
 		this.posX = 8;
@@ -33,13 +33,16 @@ public class Pawn {
 			this.posY = 8;
 		}
 		//connection avec la case
-		grid.setItemInGrid(8, 16, true);
+		//Rempli la case du joueur 2
+		grid.setItemInGrid(0, 8, true);
+		//Rempli la case du joueur 1
+		grid.setItemInGrid(16, 8, true);
 	}
 		
 	public int getY() {
 		/**
 		 * Accesseur
-		 * @return la position en y du Pion (ligne)
+		 * @return la position en y du Pion (LIGNE)
 		 */
 		return posY;	
 	}
@@ -47,7 +50,7 @@ public class Pawn {
 	public int getX(){
 		/**
 		 * Accesseur
-		 * @return la position du Pion (colonne)
+		 * @return la position du Pion (COLONNE)
 		 */
 		return posX;
 	}
@@ -62,24 +65,24 @@ public class Pawn {
 		switch (direction) {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
 		case "nord":
-			grid.setItemInGrid(this.posX, this.posY, false);
-			this.posY += 2;
-			grid.setItemInGrid(this.posX, this.posY, true);
+			grid.setItemInGrid(this.posY, this.posX, false);
+			this.posY -= 2;
+			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "ouest":
-			grid.setItemInGrid(this.posX, this.posY, false);
+			grid.setItemInGrid(this.posY, this.posX, false);
 			this.posX -= 2;
-			grid.setItemInGrid(this.posX, this.posY, true);
+			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "est":
-			grid.setItemInGrid(this.posX, this.posY, false);
+			grid.setItemInGrid(this.posY, this.posX, false);
 			this.posX += 2;
-			grid.setItemInGrid(this.posX, this.posY, true);
+			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		case "sud":
-			grid.setItemInGrid(this.posX, this.posY, false);
-			this.posY -= 2;
-			grid.setItemInGrid(this.posX, this.posY, true);
+			grid.setItemInGrid(this.posY, this.posX, false);
+			this.posY += 2;
+			grid.setItemInGrid(this.posY, this.posX, true);
 			break;
 		}
 	}
