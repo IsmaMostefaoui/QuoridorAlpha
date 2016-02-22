@@ -84,4 +84,12 @@ public class Grid {
 		 */
 		plateau[i][j].setFull(full);
 	}
+	
+	public int getLen() {
+		return plateau.length;
+	}
+	
+	public Item getItem(int i, int j) {
+		return plateau[i][j];
+	}
 }

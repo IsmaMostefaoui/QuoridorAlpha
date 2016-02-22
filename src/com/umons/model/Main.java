@@ -38,6 +38,7 @@ public class Main {
 		int choix = 0;
 		Scanner sc = new Scanner(System.in);
 		String positionWall = "";
+		boolean posOk = false;
 		int x = 0;
 		int y = 0;
 		do {
@@ -49,7 +50,7 @@ public class Main {
 					System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous aller ? >> ");
 					direction = sc.nextLine();
 					System.out.println();
-					joueur1.getPawn().move(direction, plateau);
+					posOk = joueur1.getPawn().move(direction, plateau);
 					plateau.afficheGrid(joueur1, joueur2);
 					System.out.println();
 					tour++;

@@ -5,6 +5,7 @@ public class Player {
 	private int numberOfWall;
 	private Wall wall;
 	private Pawn pion;
+	//tous les paramètres grid sont temporaires car la classe va heriter de grid
 	
 	public Player(int number, Grid grid) {
 		/**
