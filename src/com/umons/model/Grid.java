@@ -63,7 +63,7 @@ public class Grid {
 					}else if (joueur2.getPawn().getX() == j && joueur2.getPawn().getY() == i) {
 						System.out.print("2");
 					}else {
-						System.out.print("X");
+						System.out.print("3");
 					}
 				}else if (plateau[i][j].getLen() == 1) {
 					System.out.print("O");

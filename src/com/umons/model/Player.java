@@ -1,7 +1,7 @@
 package com.umons.model;
 
 public class Player {
-
+	//faire hériter de Rules
 	private int numberOfWall;
 	private Wall wall;
 	private Pawn pion;
@@ -13,6 +13,20 @@ public class Player {
 		numberOfWall = 10;
 		pion = new Pawn(number, grid);
 		wall = new Wall();
+	}
+	
+	public void putWall(Grid grid, String position, int x, int y){
+		if (position.equals("horizontal")){
+			//appele aux verif de Rules
+			for (int j = y; j < y + 3; j++){
+				grid.setItemInGrid(x, j, true);
+			}
+		}else {
+			//appele aux verif
+			for (int i = x; i < x + 3; i++){
+				grid.setItemInGrid(i, y, true);	
+			}
+		}
 	}
 	
 	public Pawn getPawn() {
@@ -28,4 +42,6 @@ public class Player {
 		 */
 		return numberOfWall;
 	}
+	
+	
 }

@@ -6,15 +6,16 @@ public class Pawn {
 	private int posY;
 	private int posX;
 	
-	public Pawn(int posX,int posY){
+	/*public Pawn(int posX,int posY){
 		/**
 		 * Constructeur de la classe Pawn 
 		 * @param position de x
 		 * @param position de y 
-		 */
+		 
 		this.posX = posX;
 		this.posY = posY;
-	}
+		
+	}*/
 	public Pawn(int number, Grid grid) {
 		/**
 		 * Constructeur par défaut de la classe Pawn
