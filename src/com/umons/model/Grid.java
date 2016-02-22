@@ -59,16 +59,16 @@ public class Grid {
 			for (int j = 0; j < plateau.length; j++) {
 				if (plateau[i][j].getFull()) {
 					if (joueur1.getPawn().getX() == j && joueur1.getPawn().getY() == i) {
-						System.out.print("1");
+						System.out.print("[1]");
 					}else if (joueur2.getPawn().getX() == j && joueur2.getPawn().getY() == i) {
-						System.out.print("2");
+						System.out.print("[2]");
 					}else {
-						System.out.print("3");
+						System.out.print("***");
 					}
 				}else if (plateau[i][j].getLen() == 1) {
-					System.out.print("O");
+					System.out.print("[ ]");
 				}else {
-					System.out.print(" ");
+					System.out.print("   ");
 				}
 			}
 			System.out.println();
