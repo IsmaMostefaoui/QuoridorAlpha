@@ -92,7 +92,7 @@ public class Grid {
 			}
 			System.out.println();
 		}
-		System.out.println(" 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
+		System.out.println(" 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
 	}
 	
 	public void setItemInGrid(int i, int j, boolean full) {
@@ -106,7 +106,10 @@ public class Grid {
 	}
 	
 	public int getLen() {
-		return plateau.length;
+		/**
+		 * @return la fausse longueur du plateau (18 au lieu de 19 en mode normal)
+		 */
+		return plateau.length-1;
 	}
 	
 	public Item getItem(int i, int j) {

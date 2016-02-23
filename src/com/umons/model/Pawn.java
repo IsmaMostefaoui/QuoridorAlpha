@@ -93,7 +93,7 @@ public class Pawn {
 				return false;
 			}
 		case "sud":
-			if (Rules.rMove(this.posX, posY)) {
+			if (Rules.rMovePion(this.posX, posY)) {
 				grid.setItemInGrid(this.posY, this.posX, false);
 				this.posY += 2;
 				grid.setItemInGrid(this.posY, this.posX, true);
