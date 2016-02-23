@@ -1,6 +1,7 @@
 package com.umons.model;
 
-public class Grid {
+public class Grid extends Rules {
+	//Herite des methodes de Rules
 
 	private Item[][] plateau;
 	

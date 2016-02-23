@@ -1,7 +1,8 @@
 
 package com.umons.model;
 
-public class Pawn {
+public class Pawn extends Rules {
+	//Pawn herite des methodes de rules
 
 	private int posY;
 	private int posX;
@@ -66,25 +67,41 @@ public class Pawn {
 		switch (direction) {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
 		case "nord":
-			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posY -= 2;
-			grid.setItemInGrid(this.posY, this.posX, true);
-			break;
+			if (stillInGrid("nord", this.posY, this.posX)) {
+				grid.setItemInGrid(this.posY, this.posX, false);
+				this.posY -= 2;
+				grid.setItemInGrid(this.posY, this.posX, true);
+				break;
+			}else{
+				System.out.println("Déplacement impossible");
+			}
 		case "ouest":
-			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posX -= 2;
-			grid.setItemInGrid(this.posY, this.posX, true);
-			break;
+			if (stillInGrid("ouest", this.posY, this.posX)) {
+				grid.setItemInGrid(this.posY, this.posX, false);
+				this.posX -= 2;
+				grid.setItemInGrid(this.posY, this.posX, true);
+				break;
+			}else{
+				System.out.println("Déplacement impossible");
+			}
 		case "est":
-			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posX += 2;
-			grid.setItemInGrid(this.posY, this.posX, true);
-			break;
+			if (stillInGrid("est", this.posY, this.posX)) {
+				grid.setItemInGrid(this.posY, this.posX, false);
+				this.posX += 2;
+				grid.setItemInGrid(this.posY, this.posX, true);
+				break;
+			}else{
+				System.out.println("Déplacement impossible");
+			}
 		case "sud":
-			grid.setItemInGrid(this.posY, this.posX, false);
-			this.posY += 2;
-			grid.setItemInGrid(this.posY, this.posX, true);
-			break;
+			if (stillInGrid("sud", this.posY, this.posX)) {
+				grid.setItemInGrid(this.posY, this.posX, false);
+				this.posY += 2;
+				grid.setItemInGrid(this.posY, this.posX, true);
+				break;
+			}else{
+				System.out.println("Déplacement impossible");
+			}
 		}
 	}
 }

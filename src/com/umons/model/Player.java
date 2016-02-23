@@ -1,7 +1,7 @@
 package com.umons.model;
 
-public class Player {
-	//faire hériter de Rules
+public class Player extends Rules {
+	//Herite de Rules
 	private int numberOfWall;
 	private Wall wall;
 	private Pawn pion;
