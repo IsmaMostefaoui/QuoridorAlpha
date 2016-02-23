@@ -56,6 +56,13 @@ public class Grid {
 
 	public void afficheGrid(Player joueur1, Player joueur2){
 		for (int i = 0; i < plateau.length; i++) {
+			//Affiche les numeros de ligne pour faciliter les tests
+			if (i<10){
+				System.out.print("" + i + "  ");
+			}else{
+				System.out.print("" + i + " ");
+			}
+			//Fin de l'affichage des lignes
 			for (int j = 0; j < plateau.length; j++) {
 				if (plateau[i][j].getFull()) {
 					if (joueur1.getPawn().getX() == j && joueur1.getPawn().getY() == i) {
@@ -73,6 +80,18 @@ public class Grid {
 			}
 			System.out.println();
 		}
+		//Affiche les numeros de colonnes(pas super bien aligné mais ça fait l'affaire ^^')
+		System.out.print("y/x ");
+		for (int x = 0; x <= 16; x++) {
+			if (x < 9) {
+				System.out.print("" + x + "  ");
+			}else {
+				System.out.print("" + x + " ");
+			}
+		}
+		//Pour pas que le texte soit collé à la grille
+		System.out.println();
+		System.out.println();
 	}
 	
 	public void setItemInGrid(int i, int j, boolean full) {
