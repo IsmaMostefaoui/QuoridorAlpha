@@ -16,17 +16,17 @@ public class Player extends Rules {
 	}
 	
 	public void putWall(Grid grid, String position, int x, int y){
-		if (position.equals("horizontal")){
-			//appele aux verif de Rules
-			for (int j = x; j < x + 3; j++){
-				grid.setItemInGrid(y, j, true);
-			}
-		}else {
-			//appele aux verif
-			for (int i = y; i < y + 3; i++){
-				grid.setItemInGrid(i, x, true);	
-			}
-		}
+		
+			if (position.equals("horizontal") && rPutWall(position, x, y)){
+					for (int j = x; j < x + 3; j++) {
+						grid.setItemInGrid(y, j, true);
+					}
+			}else if (rPutWall(position, x, y)) {
+					for (int i = y; i < y + 3; i++) {
+						grid.setItemInGrid(i, x, true);	
+					}
+				}
+			
 	}
 	
 	public Pawn getPawn() {
