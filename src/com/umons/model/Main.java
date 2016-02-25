@@ -23,8 +23,11 @@ public class Main {
 		System.out.println();
 		joueur1.getPawn().move("nord", plateau);
 		plateau.afficheGrid(joueur1, joueur2);
-		*/
-		Grid plateau ;
+		
+		
+		
+		
+		Grid plateau;
 		plateau = new Grid();
 		//Initialsie les règle !!
 		Rules rules = new Rules(plateau);
@@ -120,5 +123,6 @@ public class Main {
 				stop = false;
 			}
 		}while (!stop);
+		*/
 	}
 }
