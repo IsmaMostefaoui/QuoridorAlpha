@@ -26,6 +26,8 @@ public class Main {
 		*/
 		Grid plateau ;
 		plateau = new Grid();
+		//Initialsie les règle !!
+		Rules rules = new Rules(plateau);
 		plateau.fillGrid();
 		Player joueur1 = new Player(1, plateau);
 		Player joueur2 = new Player(2, plateau);
@@ -38,6 +40,7 @@ public class Main {
 		int choix = 0;
 		Scanner sc = new Scanner(System.in);
 		String positionWall = "";
+		boolean posOk = false;
 		int x = 0;
 		int y = 0;
 		do {
@@ -46,19 +49,23 @@ public class Main {
 				choix = sc.nextInt();
 				sc.nextLine();
 				if (choix == 1) {
-					System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous aller ? >> ");
-					direction = sc.nextLine();
-					System.out.println();
-					joueur1.getPawn().move(direction, plateau);
+					do {
+						System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous aller ? >> ");
+						direction = sc.nextLine();
+						System.out.println();
+						posOk = joueur1.move(direction, plateau);
+						
+					}while (!posOk);
 					plateau.afficheGrid(joueur1, joueur2);
 					System.out.println();
+					posOk = false;
 					tour++;
 				}else{
 					System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
 					positionWall = sc.nextLine();
-					System.out.print("x >> ");
+					System.out.print("Position en X (colonne) >> ");
 					x = Integer.parseInt(sc.nextLine());
-					System.out.print("y >> ");
+					System.out.print("Position en Y (ligne) >> ");
 					y = Integer.parseInt(sc.nextLine());
 					joueur1.putWall(plateau, positionWall, x, y);
 					plateau.afficheGrid(joueur1, joueur2);
@@ -69,19 +76,23 @@ public class Main {
 				choix = sc.nextInt();
 				sc.nextLine();
 				if (choix == 1) {
-					System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous aller ? >> ");
-					direction = sc.nextLine();
-					System.out.println();
-					joueur2.getPawn().move(direction, plateau);
+					do {
+						System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous aller ? >> ");
+						direction = sc.nextLine();
+						System.out.println();
+						posOk = joueur2.move(direction, plateau);
+						
+					}while (!posOk);
 					plateau.afficheGrid(joueur1, joueur2);
 					System.out.println();
+					posOk = false;
 					tour--;
 				}else{
 					System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
 					positionWall = sc.nextLine();
-					System.out.print("x >> ");
+					System.out.print("Position en X (colonne) >> ");
 					x = Integer.parseInt(sc.nextLine());
-					System.out.print("y >> ");
+					System.out.print("Position en Y (ligne) >> ");
 					y = Integer.parseInt(sc.nextLine());
 					joueur2.putWall(plateau, positionWall, x, y);
 					plateau.afficheGrid(joueur1, joueur2);
