@@ -6,17 +6,17 @@ public class Item {
 	 * (resp. la fente pour le mur et les case pour les pions)
 	 */
 	private boolean full;
-	private int len; //1 pour square et 2 pour slot
+	private int type; //1 pour square et 2 pour slot
 	
-	public Item(int len) {
+	public Item(int type) {
 		//Constructeur par defaut, initialise l'item à false
 		this.full = false;
-		this.len = len;
+		this.type = type;
 	}
 	
-	public Item(boolean full, int len) {
+	public Item(boolean full, int type) {
 		this.full = full;
-		this.len = len;
+		this.type = type;
 	}
 	
 	public boolean getFull() {
@@ -34,10 +34,11 @@ public class Item {
 		this.full = full;
 	}
 	
-	public int getLen() {
+	public int getType() {
 		//1 == Square
 		//2 == Slot
-		return len;
+		//3 == Bord
+		return type;
 	}
 
 }
