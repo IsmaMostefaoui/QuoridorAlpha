@@ -17,12 +17,13 @@ public class Grid {
 		 plateau = new Item[length][length];
 	}
 	
+	/**
+	 * Rempli la grille avec des cases vide et des fentes vide
+	 * Laisse un espace d'un item sur chaque cote de la grille pour
+	 * les isma error
+	 */
 	public void fillGrid() {
-		/**
-		 * Rempli la grille avec des cases vide et des fentes vide
-		 * Laisse un espace d'un item sur chaque cote de la grille pour
-		 * les isma error
-		 */
+		
 		for (int i = 1; i < plateau.length-1; i+=2) {
 			for (int j = 1; j < plateau.length-1; j+=2) {
 				plateau[i][j] = new Item(1);
@@ -82,20 +83,22 @@ public class Grid {
 		System.out.println("    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
 	}
 	
+	/**
+	 * Rempli ou non  la case
+	 * @param la position (i, j) de l'item a modifier
+	 * @param i est la ligne et j la colonne (ATTENTION, a ne pas confondre avec (x, y)
+	 * @param le caractere rempli de la case associe a la position (i, j)
+	 */
 	public void setItemInGrid(int i, int j, boolean full) {
-		/**
-		 * Rempli ou non  la case
-		 * @param la position (i, j) de l'item a modifier
-		 * @param i est la ligne et j la colonne (ATTENTION, a ne pas confondre avec (x, y)
-		 * @param le caractere rempli de la case associe a la position (i, j)
-		 */
+		
 		plateau[i][j].setFull(full);
 	}
 	
+	/**
+	 * @return la longueur du plateau
+	 */
 	public int getLen() {
-		/**
-		 * @return la fausse longueur du plateau
-		 */
+		
 		return plateau.length;
 	}
 	

@@ -7,14 +7,15 @@ public class Rules {
 	public Rules(Grid grid) {
 		plateau = grid;
 	}
-	
+
+	/**
+	 * Test si la case ou le pion veut aller est occupé ou non
+	 * Permet de gerer le face to face
+	 * @param les coordonées (x, y) de la case a verifier
+	 * @return vari si la case vide, faux sinon
+	 */
 	public static boolean rMovePion(int x, int y) {
-		/**
-		 * Test si la case ou le pion veut aller est occupé ou non
-		 * Permet de gerer le face to face
-		 * @param les coordonées (x, y) de la case a verifier
-		 * @return vari si la case vide, faux sinon
-		 */
+		
 		boolean inGrid = (x >= 0 && x < plateau.getLen() && y >= 0 && y < plateau.getLen());
 		if (inGrid) {
 			boolean caseFull = plateau.getItem(y, x).getFull();

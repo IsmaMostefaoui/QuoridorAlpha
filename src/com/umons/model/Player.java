@@ -8,11 +8,12 @@ public class Player{
 	private int posY;
 	private int posX;
 	
+	/**
+	 *Initialise les murs, le pion (1 ou 2) et la connection avec les cases
+	 * @param number est le "numero" du joueur (joueur 1 ou 2)
+	 **/
 	public Player(int number, Grid grid) {
-		/**
-		 *Initialise les murs, le pion (1 ou 2) et la connection avec les cases
-		 * @param number est le "numero" du joueur (joueur 1 ou 2)
-		 **/
+		
 		numberOfWall = 10;
 		//initialisation du pion
 		posX = 9;
@@ -31,10 +32,11 @@ public class Player{
 		grid.setItemInGrid(17, 9, true);
 	}
 	
+	/**
+	 * Pose un mur sur la grille en remplissant les item de type 2
+	 */
 	public void putWall(Grid grid, String position, int x, int y){
-		/**
-		 * Pose un mur sur la grille en remplissant les item de type 2
-		 */
+		
 		if (position.equals("horizontal") && Rules.rPutWall(position, x, y)){
 			for (int j = x; j < x + 3; j++) {
 				grid.setItemInGrid(y, j, true);
@@ -46,12 +48,13 @@ public class Player{
 		}
 	}
 	
+	/**
+	 * Mutateur de Pawn, deplace pion.
+	 * @param bouge le pion d'une case en fonction de la direction
+	 * @param ouest, est, nord, sud
+	 */
 	public boolean move(String direction, Grid grid) {
-		/**
-		 * Mutateur de Pawn, deplace pion.
-		 * @param bouge le pion d'une case en fonction de la direction
-		 * @param ouest, est, nord, sud
-		 */
+		
 		//On verra ça plus tard, en gros, ce sont des enchainements de else if plus lisible
 		switch (direction) {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
@@ -111,33 +114,41 @@ public class Player{
 			}else {
 				return false;
 			}
+		case "dd":
+			if (!Rules.rMovePion(posX, posY+2) && (!Rules.rMovePion(posX, posY+4)) && Rules.rMovePion(posX+2, posY+2)) {
+				grid.setItemInGrid(posY, posX, false);
+				posX+=2;
+				posY += 4;
+				grid.setItemInGrid(posY, posX, true);
+			}
 		}
 		//si le gars n a pas saisi la bonne direction
 		return false;
 	}
 	
-	//Accesseur des murs
+	/**
+	 * @return le nombre de mur du joueur de type int
+	 */
 	public int getNumberOfWall() {
-		/**
-		 * @return le nombre de mur du joueur de type int
-		 */
+		
 		return numberOfWall;
 	}
 	
-	//Accesseur du pion
+	/**
+	 * Accesseur
+	 * @return la position en y du Pion (LIGNE)
+	 */
 	public int getPawnY() {
-		/**
-		 * Accesseur
-		 * @return la position en y du Pion (LIGNE)
-		 */
+		
 		return posY;	
 	}
 	
+	/**
+	 * Accesseur
+	 * @return la position du Pion (COLONNE)
+	 */
 	public int getPawnX(){
-		/**
-		 * Accesseur
-		 * @return la position du Pion (COLONNE)
-		 */
+		
 		return posX;
 	}
 }
