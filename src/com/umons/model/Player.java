@@ -59,9 +59,14 @@ public class Player{
 		switch (direction) {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
 		case "z":
-			if (Rules.rMovePion(posX, posY-2)) { //ici c'est x, y car la methode s occupe de l inversement ligne colonne
+			if (Rules.rMovePion(posX, posY-2)) { //ici c'est x, y car la methode s occupe de l inversement ligne colonne, -2 car tout en bas
 				grid.setItemInGrid(posY, posX, false);
 				posY -= 2;
+				grid.setItemInGrid(posY, posX, true);
+				return true;
+			}else if (Rules.rMovePion(posX, posY-4)){
+				grid.setItemInGrid(posY, posX, false);
+				posY -= 4;
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else {
@@ -73,6 +78,11 @@ public class Player{
 				posX -= 2;
 				grid.setItemInGrid(posY, posX, true);
 				return true;
+			}else if (Rules.rMovePion(posX-4, posY)){
+				grid.setItemInGrid(posY, posX, false);
+				posX -= 4;
+				grid.setItemInGrid(posY, posX, true);
+				return true;
 			}else {
 				return false;
 			}
@@ -82,6 +92,11 @@ public class Player{
 				posX += 2;
 				grid.setItemInGrid(posY, posX, true);
 				return true;
+			}else if (Rules.rMovePion(posX+4, posY)){
+				grid.setItemInGrid(posY, posX, false);
+				posX += 4;
+				grid.setItemInGrid(posY, posX, true);
+				return true;
 			}else {
 				return false;
 			}
@@ -89,6 +104,11 @@ public class Player{
 			if (Rules.rMovePion(posX, posY+2)) {
 				grid.setItemInGrid(posY, posX, false);
 				posY += 2;
+				grid.setItemInGrid(posY, posX, true);
+				return true;
+			}else if (Rules.rMovePion(posX, posY+4)){
+				grid.setItemInGrid(posY, posX, false);
+				posY += 4;
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else {
@@ -123,5 +143,4 @@ public class Player{
 		 */
 		return posX;
 	}
-	
 }

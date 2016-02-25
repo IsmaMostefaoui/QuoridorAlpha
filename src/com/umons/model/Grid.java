@@ -107,9 +107,9 @@ public class Grid {
 	
 	public int getLen() {
 		/**
-		 * @return la fausse longueur du plateau (18 au lieu de 19 en mode normal)
+		 * @return la fausse longueur du plateau
 		 */
-		return plateau.length-1;
+		return plateau.length;
 	}
 	
 	public Item getItem(int i, int j) {

@@ -55,13 +55,13 @@ public class Pawn {
 		 */
 		return posX;
 	}
-	
+	/*
 	public boolean move(String direction, Grid grid) {
 		/**
 		 * Mutateur de Pawn, deplace pion.
 		 * @param bouge le pion d'une case en fonction de la direction
 		 * @param ouest, est, nord, sud
-		 */
+		 
 		//On verra ça plus tard, en gros, ce sont des enchainements de else if plus lisible
 		switch (direction) {
 		//permet d'enlever de la grille le pion et de le remmettre sur les nouvelles coordonees
@@ -75,7 +75,7 @@ public class Pawn {
 				return false;
 			}
 		case "ouest":
-			if (Rules.rMove(this.posX, posY)){
+			if (Rules.rMovePawn(this.posX, posY)){
 				grid.setItemInGrid(this.posY, this.posX, false);
 				this.posX -= 2;
 				grid.setItemInGrid(this.posY, this.posX, true);
@@ -105,4 +105,5 @@ public class Pawn {
 		//si le gars n a pas saisi la bonne direction
 		return false;
 	}
+	*/
 }
