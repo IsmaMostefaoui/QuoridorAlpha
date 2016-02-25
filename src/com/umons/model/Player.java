@@ -34,18 +34,28 @@ public class Player{
 	
 	/**
 	 * Pose un mur sur la grille en remplissant les item de type 2
+	 * @param grid grille du jeu
+	 * @param position prend "horizontal" ou "vertical"
+	 * @param x prend la position en x de l'extremite gauche du mur horizontal, ou la colonne pour un mur vertical
+	 * @param y prend la position en y de l'extremite supperieur du mur vertical, ou la ligne pour un mur horizontal
+	 * @return un boolean, true si le mur à été placé, sinon false
 	 */
-	public void putWall(Grid grid, String position, int x, int y){
+	public boolean putWall(Grid grid, String position, int x, int y){
 		
-		if (position.equals("horizontal") && Rules.rPutWall(position, x, y)){
+		if (position.equals("horizontal") && Rules.rPutWall(position, x, y) && Rules.rSlotFull(position, x, y)) {
 			for (int j = x; j < x + 3; j++) {
 				grid.setItemInGrid(y, j, true);
 			}
-		}else if (Rules.rPutWall(position, x, y)) {
+			return true;
+			
+		}else if (position.equals("vertical") && Rules.rPutWall(position, x, y) && Rules.rSlotFull(position, x, y)) {
 			for (int i = y; i < y + 3; i++) {
-				grid.setItemInGrid(i, x, true);	
+				grid.setItemInGrid(i, x, true);
 			}
+			return true;
 		}
+		System.out.println("impossible de placer un mur à cet endroit");
+		return false;
 	}
 	
 	/**
