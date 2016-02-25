@@ -54,7 +54,6 @@ public class Main {
 						direction = sc.nextLine();
 						System.out.println();
 						posOk = joueur1.move(direction, plateau);
-						
 					}while (!posOk);
 					plateau.afficheGrid(joueur1, joueur2);
 					System.out.println();

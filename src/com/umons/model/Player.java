@@ -115,15 +115,26 @@ public class Player{
 				return false;
 			}
 		case "dd":
-			System.out.println("Diagonale enter");
-			System.out.println("!Rules.rMovePion: " + !Rules.rMovePion(posX, posY+2));
-			System.out.println("!Rules.rMovePion +3: " + !Rules.rMovePion(posX, posY+3));
-			System.out.println("!Rules.rMovePion +2 +2: " + Rules.rMovePion(posX+2, posY+2));
-			if (!Rules.rMovePion(posX, posY+2) && Rules.rMovePion(posX+2, posY+2)) {
+			if (!Rules.rMovePion(posX, posY+2) &&  !Rules.rMovePion(posX, posY+3) && Rules.rMovePion(posX+2, posY+2)) {
 				grid.setItemInGrid(posY, posX, false);
 				posX += 2;
 				posY += 2;
 				grid.setItemInGrid(posY, posX, true);
+				return true;
+			}else {
+				System.out.println("Vous n'êtes pas autorisé à allez sur la digonale de droite !");
+				return false;
+			}
+		case "dg":
+			if (!Rules.rMovePion(posX, posY+2) &&  !Rules.rMovePion(posX, posY+3) && Rules.rMovePion(posX+2, posY+2)) {
+				grid.setItemInGrid(posY, posX, false);
+				posX -= 2;
+				posY += 2;
+				grid.setItemInGrid(posY, posX, true);
+				return true;
+			}else {
+				System.out.println("Vous n'êtes pas autorisé à allez sur la digonale de gauche !!");
+				return false;
 			}
 		}
 		//si le gars n a pas saisi la bonne direction
