@@ -1,6 +1,7 @@
 package com.umons.model;
 
 public class Grid {
+	//Herite des methodes de Rules
 
 	private Item[][] plateau;
 	
@@ -49,28 +50,16 @@ public class Grid {
 			plateau[i][18].setFull(true);
 		}
 	}
-	
-	/*
-	 public void afficheGrid(Player joueur1, Player joueur2){
-		for (int i = 0; i < plateau.length; i+=2) {
-			for (int j = 0; j < plateau.length; j++) {
-				if (joueur1.getPawn().getY()== i && joueur1.getPawn().getX() == j) {
-					System.out.print("1"); //Fix bug #3 (voir classe Pawn)
-				}else if (joueur2.getPawn().getY() == i && joueur2.getPawn().getX() == j){
-					System.out.print("2");
-				}else if (plateau[i][j].getLen() == 1){ // si on tombe sur une case
-					System.out.print("O");
-				}else{
-					System.out.print(" "); // si on tombe sur une fente
-				}
-			}
-			System.out.print("\n                 \n");
-		}
-	}
-	 */
 
 	public void afficheGrid(Player joueur1, Player joueur2){
 		for (int i = 0; i < plateau.length; i++) {
+			//Affiche les numeros de ligne pour faciliter les tests
+			if (i<10){
+				System.out.print("" + i + "  ");
+			}else{
+				System.out.print("" + i + " ");
+			}
+			//Fin de l'affichage des lignes
 			for (int j = 0; j < plateau.length; j++) {
 				if (plateau[i][j].getFull()) {
 					if (joueur1.getPawnX() == j && joueur1.getPawnY() == i) {
@@ -90,7 +79,7 @@ public class Grid {
 			}
 			System.out.println();
 		}
-		System.out.println(" 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
+		System.out.println("    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
 	}
 	
 	public void setItemInGrid(int i, int j, boolean full) {

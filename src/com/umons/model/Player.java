@@ -2,7 +2,6 @@ package com.umons.model;
 
 public class Player{
 	//faire hériter de Rules
-	
 	//Mur
 	private int numberOfWall;
 	//Pion
@@ -34,16 +33,14 @@ public class Player{
 	
 	public void putWall(Grid grid, String position, int x, int y){
 		/**
-		 * Pose un mur sur la grille en remplissant un les item de type 2
+		 * Pose un mur sur la grille en remplissant les item de type 2
 		 */
-		if (position.equals("horizontal")){
-			//appele aux verif de Rules
-			for (int j = x; j < x + 3; j++){
+		if (position.equals("horizontal") && Rules.rPutWall(position, x, y)){
+			for (int j = x; j < x + 3; j++) {
 				grid.setItemInGrid(y, j, true);
 			}
-		}else {
-			//appele aux verif
-			for (int i = y; i < y + 3; i++){
+		}else if (Rules.rPutWall(position, x, y)) {
+			for (int i = y; i < y + 3; i++) {
 				grid.setItemInGrid(i, x, true);	
 			}
 		}

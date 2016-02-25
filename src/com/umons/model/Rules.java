@@ -24,14 +24,26 @@ public class Rules {
 		}
 	}
 	
-	public static boolean rMoveWall(int x, int y) {
-		/**
-		 * Test si la fente en face du pion est occupe ou non
-		 */
-		return true;
-	}
-	
+	/* Inutile pour l'instant, attente de mise a jour
 	public static boolean rFaceToFace(int x, int y) {
 		return (rMovePion(x, y) && !(plateau.getItem(y, x).getFull()));
+	}*/
+
+	public static boolean rPutWall(String pos, int x, int y) {
+		if (pos.equals("horizontal")) {
+			if (x % 2 != 0 && y % 2 == 0) {
+				//verifie si le mur n'est pas sur une case
+				return true;
+			}
+			return false;
+			
+		}else {
+			if (x % 2 == 0 && y % 2 != 0) {
+				//verifie si le mur n'est pas sur une case
+				return true;
+			}
+			return false;
+		}
 	}
 }
+	

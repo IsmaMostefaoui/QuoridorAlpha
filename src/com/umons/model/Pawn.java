@@ -1,7 +1,8 @@
-
+/*
 package com.umons.model;
 
-public class Pawn {
+public class Pawn extends Rules {
+	//Pawn herite des methodes de rules
 
 	private int posY;
 	private int posX;
@@ -15,14 +16,14 @@ public class Pawn {
 		this.posX = posX;
 		this.posY = posY;
 		
-	}*/
+	}
 	public Pawn(int number, Grid grid) {
 		/**
 		 * Constructeur par défaut de la classe Pawn
 		 * connecte le pion à l'item(1)(la case)
 		 * @param le numero du joueur (initialisera en fonction du joueur 1 ou 2)
 		 * @param la grille sur laquelle il sera pose (car besoin de remplir la case)
-		 */
+		 
 		//La grille comporte 17 case mais on commence à 0 donc (0 -> 16)
 		this.posX = 8;
 		if (number == 1) {
@@ -44,7 +45,7 @@ public class Pawn {
 		/**
 		 * Accesseur
 		 * @return la position en y du Pion (LIGNE)
-		 */
+		 
 		return posY;	
 	}
 	
@@ -52,9 +53,10 @@ public class Pawn {
 		/**
 		 * Accesseur
 		 * @return la position du Pion (COLONNE)
-		 */
+		 
 		return posX;
 	}
+<<<<<<< HEAD
 	/*
 	public boolean move(String direction, Grid grid) {
 		/**
@@ -105,5 +107,9 @@ public class Pawn {
 		//si le gars n a pas saisi la bonne direction
 		return false;
 	}
-	*/
+	
+=======
+	
+>>>>>>> da34c0d91882f85f1950b94a0bab183659523587
 }
+*/
