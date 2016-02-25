@@ -115,10 +115,14 @@ public class Player{
 				return false;
 			}
 		case "dd":
-			if (!Rules.rMovePion(posX, posY+2) && (!Rules.rMovePion(posX, posY+4)) && Rules.rMovePion(posX+2, posY+2)) {
+			System.out.println("Diagonale enter");
+			System.out.println("!Rules.rMovePion: " + !Rules.rMovePion(posX, posY+2));
+			System.out.println("!Rules.rMovePion +3: " + !Rules.rMovePion(posX, posY+3));
+			System.out.println("!Rules.rMovePion +2 +2: " + Rules.rMovePion(posX+2, posY+2));
+			if (!Rules.rMovePion(posX, posY+2) && Rules.rMovePion(posX+2, posY+2)) {
 				grid.setItemInGrid(posY, posX, false);
-				posX+=2;
-				posY += 4;
+				posX += 2;
+				posY += 2;
 				grid.setItemInGrid(posY, posX, true);
 			}
 		}
