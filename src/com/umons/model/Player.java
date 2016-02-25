@@ -62,6 +62,7 @@ public class Player{
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else if (Rules.rMovePion(posX, posY-4)){
+				//Saute pion
 				grid.setItemInGrid(posY, posX, false);
 				posY -= 4;
 				grid.setItemInGrid(posY, posX, true);
@@ -76,6 +77,7 @@ public class Player{
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else if (Rules.rMovePion(posX-4, posY)){
+				//Saute pion
 				grid.setItemInGrid(posY, posX, false);
 				posX -= 4;
 				grid.setItemInGrid(posY, posX, true);
@@ -90,6 +92,7 @@ public class Player{
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else if (Rules.rMovePion(posX+4, posY)){
+				//Saute pion
 				grid.setItemInGrid(posY, posX, false);
 				posX += 4;
 				grid.setItemInGrid(posY, posX, true);
@@ -104,6 +107,7 @@ public class Player{
 				grid.setItemInGrid(posY, posX, true);
 				return true;
 			}else if (Rules.rMovePion(posX, posY+4)){
+				//Saute pion
 				grid.setItemInGrid(posY, posX, false);
 				posY += 4;
 				grid.setItemInGrid(posY, posX, true);
