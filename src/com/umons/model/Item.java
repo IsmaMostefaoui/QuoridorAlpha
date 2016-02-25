@@ -19,18 +19,20 @@ public class Item {
 		this.type = type;
 	}
 	
+	/**
+	 * Accesseur du caractere rempli de la case
+	 */
 	public boolean getFull() {
-		/**
-		 * Accesseur du caractere rempli de la case
-		 */
+		
 		return full;
 	}
 	
+	/**
+	 * Mutateur pour full
+	 * @param le caractere rempli ou non de l'Item
+	 */
 	public void setFull(boolean full) {
-		/**
-		 * Mutateur pour full
-		 * @param le caractere rempli ou non de l'Item
-		 */
+		
 		this.full = full;
 	}
 	
