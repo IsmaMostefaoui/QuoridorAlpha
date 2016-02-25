@@ -11,6 +11,7 @@ public class Player{
 	/**
 	 *Initialise les murs, le pion (1 ou 2) et la connection avec les cases
 	 * @param number est le "numero" du joueur (joueur 1 ou 2)
+	 * @param grid un objet de type Grid representant le plateau sur lequel va se deplacer le pion
 	 **/
 	public Player(int number, Grid grid) {
 		
@@ -33,7 +34,7 @@ public class Player{
 	}
 	
 	/**
-	 * Pose un mur sur la grille en remplissant les item de type 2
+	 * Pose un mur sur la grille en remplissant les item de type 2. Affiche du texte !
 	 * @param grid grille du jeu
 	 * @param position prend "horizontal" ou "vertical"
 	 * @param x prend la position en x de l'extremite gauche du mur horizontal, ou la colonne pour un mur vertical
@@ -59,9 +60,9 @@ public class Player{
 	}
 	
 	/**
-	 * Mutateur de Pawn, deplace pion.
-	 * @param bouge le pion d'une case en fonction de la direction
-	 * @param ouest, est, nord, sud
+	 * Deplace le pion selon une direction. Affcihe du texte pour "dd" et "dg"
+	 * @param direction un String ("z", "s", "d", "q") resp. (nord, sud, est, ouest)
+	 * @param grid un objet de type Grid representant le tableau sur lequel le pion doit se deplacer
 	 */
 	public boolean move(String direction, Grid grid) {
 		
@@ -156,7 +157,7 @@ public class Player{
 	}
 	
 	/**
-	 * @return le nombre de mur du joueur de type int
+	 * @return numberOfWall un int représentant le nombre de mur restant du joueur courant
 	 */
 	public int getNumberOfWall() {
 		
@@ -165,7 +166,7 @@ public class Player{
 	
 	/**
 	 * Accesseur
-	 * @return la position en y du Pion (LIGNE)
+	 * @return posY la position en y du Pion (LIGNE)
 	 */
 	public int getPawnY() {
 		
@@ -174,7 +175,7 @@ public class Player{
 	
 	/**
 	 * Accesseur
-	 * @return la position du Pion (COLONNE)
+	 * @return posX la position du Pion (COLONNE)
 	 */
 	public int getPawnX(){
 		

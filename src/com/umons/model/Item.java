@@ -1,13 +1,17 @@
 package com.umons.model;
-
-public class Item {
-	/*
+/**
 	 * Regroupe la modelisation du slot et du square
 	 * (resp. la fente pour le mur et les case pour les pions)
 	 */
+public class Item {
+	
 	private boolean full;
 	private int type; //1 pour square et 2 pour slot
 	
+	/**
+	 * Initialise un item
+	 * @param type un int représentant le type de l'item (1, 2 ou 3)
+	 */
 	public Item(int type) {
 		//Constructeur par defaut, initialise l'item à false
 		this.full = false;
@@ -20,7 +24,7 @@ public class Item {
 	}
 	
 	/**
-	 * Accesseur du caractere rempli de la case
+	 *@return un boolean si l'item (de n'importe quel type) est rempli, faux sinon
 	 */
 	public boolean getFull() {
 		
@@ -28,14 +32,16 @@ public class Item {
 	}
 	
 	/**
-	 * Mutateur pour full
-	 * @param le caractere rempli ou non de l'Item
+	 * Rempli un item
+	 * @param full un boolean vrai si la case doit être remplie, faux sinon
 	 */
 	public void setFull(boolean full) {
 		
 		this.full = full;
 	}
-	
+	/**
+	 * @return le type de l'item
+	 */
 	public int getType() {
 		//1 == Square
 		//2 == Slot

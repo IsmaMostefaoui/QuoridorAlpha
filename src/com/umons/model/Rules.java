@@ -9,10 +9,11 @@ public class Rules {
 	}
 
 	/**
-	 * Test si la case ou le pion veut aller est occupé ou non
-	 * Permet de gerer le face to face
-	 * @param les coordonées (x, y) de la case a verifier
-	 * @return vari si la case vide, faux sinon
+	 * Vérifie si un pion peut ou pas bouger.
+	 * Permet aussi de gérer le Face to Face (géré en réalité dans move)
+	 * @param x un int représentant les coordonées des colonnes
+	 * @param y un int représentant les coordonées des lignes
+	 * @return un boolean vrai si le pion peut bouger, faux sinon
 	 */
 	public static boolean rMovePion(int x, int y) {
 		

@@ -49,9 +49,11 @@ public class Main {
 		int y = 0;
 		do {
 			if (tour == 1) {
-				System.out.print("Joueur 1, à vous de jouer. Pion ou mur ? (1 ou 2)");
-				choix = sc.nextInt();
-				sc.nextLine();
+				do {
+					System.out.print("Joueur 1, à vous de jouer. Pion ou mur ? (1 ou 2)");
+					choix = sc.nextInt();
+					sc.nextLine();
+				}while (choix != 1 && choix != 2);
 				if (choix == 1) {
 					do {
 						System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous aller ? >> ");
@@ -64,13 +66,25 @@ public class Main {
 					posOk = false;
 					tour++;
 				}else if (choix == 2){
+					System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
+					positionWall = sc.nextLine();
 					do {
-						System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
-						positionWall = sc.nextLine();
 						System.out.print("Position en X (colonne) >> ");
 						x = Integer.parseInt(sc.nextLine());
+					}while (x < 0 || x > plateau.getLen());
+					do {
 						System.out.print("Position en Y (ligne) >> ");
 						y = Integer.parseInt(sc.nextLine());
+					}while (y < 0 || x > plateau.getLen());
+					do {
+						do {
+							System.out.print("Position en X (colonne) >> ");
+							x = Integer.parseInt(sc.nextLine());
+						}while (x < 0 || x > plateau.getLen());
+						do {
+							System.out.print("Position en Y (ligne) >> ");
+							y = Integer.parseInt(sc.nextLine());
+						}while (y < 0 || x > plateau.getLen());
 						System.out.println();//ERRREUR 404
 						wallOk = joueur1.putWall(plateau,positionWall,x,y);
 						//L'affichage du message "impossible de placer un mur à cet endroit" est dans le code de putWall
@@ -82,9 +96,11 @@ public class Main {
 			
 				}
 			}else {
-				System.out.print("Joueur 2, à vous de jouer. Pion ou mur ? (1 ou 2)");
-				choix = sc.nextInt();
-				sc.nextLine();
+				do {
+					System.out.print("Joueur 2, à vous de jouer. Pion ou mur ? (1 ou 2)");
+					choix = sc.nextInt();
+					sc.nextLine();
+				}while (choix != 1 && choix != 2);
 				if (choix == 1) {
 					do {
 						System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous aller ? >> ");
@@ -99,17 +115,15 @@ public class Main {
 					tour--;
 				}else if (choix == 2) {
 					do {
-					System.out.print("Joueur 2 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
-					positionWall = sc.nextLine();
-					System.out.print("Position en X (colonne) >> ");
-					x = Integer.parseInt(sc.nextLine());
-					System.out.print("Position en Y (ligne) >> ");
-					y = Integer.parseInt(sc.nextLine());
-					System.out.println();
-					wallOk = joueur2.putWall(plateau,positionWall,x,y);
-					//L'affichage du message "impossible de placer un mur à cet endroit" est dans le code de putWall
-					
-					
+						System.out.print("Joueur 2 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
+						positionWall = sc.nextLine();
+						System.out.print("Position en X (colonne) >> ");
+						x = Integer.parseInt(sc.nextLine());
+						System.out.print("Position en Y (ligne) >> ");
+						y = Integer.parseInt(sc.nextLine());
+						System.out.println();
+						wallOk = joueur2.putWall(plateau,positionWall,x,y);
+						//L'affichage du message "impossible de placer un mur à cet endroit" est dans le code de putWall
 					}while (!wallOk);
 					plateau.afficheGrid(joueur1, joueur2);
 					wallOk = false;

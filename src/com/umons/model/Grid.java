@@ -18,9 +18,9 @@ public class Grid {
 	}
 	
 	/**
-	 * Rempli la grille avec des cases vide et des fentes vide
-	 * Laisse un espace d'un item sur chaque cote de la grille pour
-	 * les isma error
+	 * Rempli la grille avec des cases vides et des fentes vides
+	 * Laisse un espace d'un item sur chaque côté de la grille pour
+	 * les ISMA ERROR (erreur d'index)
 	 */
 	public void fillGrid() {
 		
@@ -54,7 +54,7 @@ public class Grid {
 
 	public void afficheGrid(Player joueur1, Player joueur2){
 		for (int i = 0; i < plateau.length; i++) {
-			//Affiche les numeros de ligne pour faciliter les tests
+			//Affiche les numéros de lignes pour faciliter les tests
 			if (i<10){
 				System.out.print("" + i + "  ");
 			}else{
@@ -84,10 +84,10 @@ public class Grid {
 	}
 	
 	/**
-	 * Rempli ou non  la case
-	 * @param la position (i, j) de l'item a modifier
-	 * @param i est la ligne et j la colonne (ATTENTION, a ne pas confondre avec (x, y)
-	 * @param le caractere rempli de la case associe a la position (i, j)
+	 * Rempli ou non  la case (ATTENTION, à ne pas confondre avec (x, y)
+	 * @param i est la ligne
+	 * @param j la colonne
+	 * @param full le caractère rempli de la case associé à la position (i, j)
 	 */
 	public void setItemInGrid(int i, int j, boolean full) {
 		
