@@ -24,7 +24,10 @@ public class Main {
 		joueur1.getPawn().move("nord", plateau);
 		plateau.afficheGrid(joueur1, joueur2);
 		*/
-		Grid plateau ;
+		
+		
+		
+		Grid plateau;
 		plateau = new Grid();
 		//Initialsie les règle !!
 		Rules rules = new Rules(plateau);
@@ -41,6 +44,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		String positionWall = "";
 		boolean posOk = false;
+		boolean wallOk = false;
 		int x = 0;
 		int y = 0;
 		do {
@@ -59,16 +63,23 @@ public class Main {
 					System.out.println();
 					posOk = false;
 					tour++;
-				}else{
-					System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
-					positionWall = sc.nextLine();
-					System.out.print("Position en X (colonne) >> ");
-					x = Integer.parseInt(sc.nextLine());
-					System.out.print("Position en Y (ligne) >> ");
-					y = Integer.parseInt(sc.nextLine());
-					joueur1.putWall(plateau, positionWall, x, y);
+				}else if (choix == 2){
+					do {
+						System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
+						positionWall = sc.nextLine();
+						System.out.print("Position en X (colonne) >> ");
+						x = Integer.parseInt(sc.nextLine());
+						System.out.print("Position en Y (ligne) >> ");
+						y = Integer.parseInt(sc.nextLine());
+						System.out.println();//ERRREUR 404
+						wallOk = joueur1.putWall(plateau,positionWall,x,y);
+						//L'affichage du message "impossible de placer un mur à cet endroit" est dans le code de putWall
+						
+					}while (!wallOk);
 					plateau.afficheGrid(joueur1, joueur2);
+					wallOk = false;
 					tour++;
+			
 				}
 			}else {
 				System.out.print("Joueur 2, à vous de jouer. Pion ou mur ? (1 ou 2)");
@@ -86,22 +97,31 @@ public class Main {
 					System.out.println();
 					posOk = false;
 					tour--;
-				}else{
-					System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
+				}else if (choix == 2) {
+					do {
+					System.out.print("Joueur 2 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
 					positionWall = sc.nextLine();
 					System.out.print("Position en X (colonne) >> ");
 					x = Integer.parseInt(sc.nextLine());
 					System.out.print("Position en Y (ligne) >> ");
 					y = Integer.parseInt(sc.nextLine());
-					joueur2.putWall(plateau, positionWall, x, y);
+					System.out.println();
+					wallOk = joueur2.putWall(plateau,positionWall,x,y);
+					//L'affichage du message "impossible de placer un mur à cet endroit" est dans le code de putWall
+					
+					
+					}while (!wallOk);
 					plateau.afficheGrid(joueur1, joueur2);
+					wallOk = false;
 					tour--;
-				}
+					}
+				
 			if (status == "yes")
 				stop = true;
 			else
 				stop = false;
 			}
 		}while (!stop);
+	
 	}
 }
