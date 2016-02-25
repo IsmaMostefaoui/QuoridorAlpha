@@ -1,5 +1,15 @@
 package com.umons.model;
 
+/**
+ * Modélise un joueur.
+ * Il possède :
+ * -Une méthode pour bouger un pion
+ * -Une méthode pour poser des murs
+ * -Une varibale du nombre de murs restants (private avec accesseur)
+ * -Deux varibale pour la position du pion
+ * @author isma
+ *
+ */
 public class Player{
 	//faire hériter de Rules
 	//Mur

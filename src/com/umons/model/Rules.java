@@ -1,9 +1,18 @@
 package com.umons.model;
 
+/**
+ * Contient toutes les méthodes (static) concernant les règles du jeu Quoridor.
+ * @author isma
+ * @author robin
+ *
+ */
 public class Rules {
 	//est Parent de Pawn et de Grid
 	private static Grid plateau;
-	
+	/**
+	 * Initialise un plateau (celui sur lequel sera appliquer toutes les règles.
+	 * @param grid le plateau
+	 */
 	public Rules(Grid grid) {
 		plateau = grid;
 	}

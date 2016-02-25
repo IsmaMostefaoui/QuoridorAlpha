@@ -1,5 +1,13 @@
 package com.umons.model;
 
+/**
+ * Modélise une grille.
+ * Possède :
+ * -Une méthode pour remplir la grille
+ * -Une méthode pour afficher la grille
+ * @author isma
+ *
+ */
 public class Grid {
 	//Herite des methodes de Rules
 
@@ -102,6 +110,12 @@ public class Grid {
 		return plateau.length;
 	}
 	
+	/**
+	 * 
+	 * @param i le numéro de la ligne
+	 * @param j le numéro de la colonne
+	 * @return un objet de type Item à l'emplacement i, j
+	 */
 	public Item getItem(int i, int j) {
 		return plateau[i][j];
 	}
