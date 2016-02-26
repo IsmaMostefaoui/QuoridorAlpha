@@ -69,14 +69,6 @@ public class Main {
 					System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
 					positionWall = sc.nextLine();
 					do {
-						System.out.print("Position en X (colonne) >> ");
-						x = Integer.parseInt(sc.nextLine());
-					}while (x < 0 || x > plateau.getLen());
-					do {
-						System.out.print("Position en Y (ligne) >> ");
-						y = Integer.parseInt(sc.nextLine());
-					}while (y < 0 || x > plateau.getLen());
-					do {
 						do {
 							System.out.print("Position en X (colonne) >> ");
 							x = Integer.parseInt(sc.nextLine());

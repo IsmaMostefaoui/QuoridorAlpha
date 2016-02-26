@@ -8,6 +8,7 @@ package com.umons.model;
  * -Une varibale du nombre de murs restants (private avec accesseur)
  * -Deux varibale pour la position du pion
  * @author isma
+ * @author robin
  *
  */
 public class Player{
@@ -57,17 +58,46 @@ public class Player{
 			for (int j = x; j < x + 3; j++) {
 				grid.setItemInGrid(y, j, true);
 			}
+			numberOfWall--;
 			return true;
 			
 		}else if (position.equals("vertical") && Rules.rPutWall(position, x, y) && Rules.rSlotFull(position, x, y)) {
 			for (int i = y; i < y + 3; i++) {
 				grid.setItemInGrid(i, x, true);
 			}
+			numberOfWall--;
 			return true;
 		}
 		System.out.println("impossible de placer un mur à cet endroit");
 		return false;
 	}
+	
+	/**
+	 * Converti la direction dans la quelle un pion veut bouger (z, q, s, d, z dd, z dg, q dd, q dg, s dd, s dg, d dd, d dg) en coordonnées sur la grille
+	 * @param direction un String correpsondant à la direction dans laquelle le pion va bouger
+	 * @return un tableau de int correspondant aux coordonées (x, y)
+	 */
+	/*
+	public int[] stringToCoord(String direction, String directionBis) {
+		int[] tabCoord = new int[2];
+		switch(direction) {
+		case "z":
+			if (directionBis)
+			//je les ai mis côte à côte pour gagner de la place et de la lisibilité
+			tabCoord[0] = this.posX; tabCoord[1] = this.posY-2;
+			return tabCoord;
+		case "q":
+			tabCoord[0] = this.posX-2; tabCoord[1] = this.posY;
+			return tabCoord;
+		case "d":
+			tabCoord[0] = this.posX+2; tabCoord[1] = this.posY;
+			return tabCoord;
+		case "s":
+			tabCoord[0] = this.posX; tabCoord[1] = this.posY+2;
+			return tabCoord;
+		}
+	}
+	*/
 	
 	/**
 	 * Deplace le pion selon une direction. Affcihe du texte pour "dd" et "dg"
