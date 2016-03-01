@@ -6,6 +6,7 @@ package com.umons.model;
  * -Une méthode pour remplir la grille
  * -Une méthode pour afficher la grille
  * @author isma
+ * @author robin
  *
  */
 public class Grid {
@@ -59,8 +60,10 @@ public class Grid {
 			plateau[i][18].setFull(true);
 		}
 	}
-
+	
 	public void afficheGrid(Player joueur1, Player joueur2){
+		//A CHNAGER IL suffit de créer 3 sous-classe de la classe item, de définir surcharger la méthode toString pour chacune des sous-classe
+		//et on oublie tous ces if... Selon qu'on a un bord, une case ou une fente, elle s'affichera toute seule !!
 		for (int i = 0; i < plateau.length; i++) {
 			//Affiche les numéros de lignes pour faciliter les tests
 			if (i<10){

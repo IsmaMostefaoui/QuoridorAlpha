@@ -59,7 +59,7 @@ public class Main {
 						System.out.print("Joueur 1, à vous de jouer. Ou voulez-vous aller ? >> ");
 						direction = sc.nextLine();
 						System.out.println();
-						posOk = joueur1.move(direction, plateau);
+						posOk = joueur1.move(plateau, joueur1.stringToCoord(direction));
 					}while (!posOk);
 					plateau.afficheGrid(joueur1, joueur2);
 					System.out.println();
@@ -98,7 +98,7 @@ public class Main {
 						System.out.print("Joueur 2, à vous de jouer. Ou voulez-vous aller ? >> ");
 						direction = sc.nextLine();
 						System.out.println();
-						posOk = joueur2.move(direction, plateau);
+						posOk = joueur2.move(plateau, joueur2.stringToCoord(direction));
 						
 					}while (!posOk);
 					plateau.afficheGrid(joueur1, joueur2);

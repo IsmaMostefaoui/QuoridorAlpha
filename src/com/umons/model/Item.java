@@ -33,7 +33,7 @@ public class Item {
 	
 	/**
 	 * Rempli un item
-	 * @param full un boolean vrai si la case doit être remplie, faux sinon
+	 * @param full un boolean vrai si la case est remplie, faux sinon
 	 */
 	public void setFull(boolean full) {
 		
