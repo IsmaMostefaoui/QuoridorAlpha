@@ -66,14 +66,84 @@ public class Player{
 			return true;
 		}
 		System.out.println("impossible de placer un mur à cet endroit");
-		return false;
+		return false; 
 	}
 	
+	
+	
+	public int[] stringToCoord(String direction) {
+		// tableau de la forme {x, y}
+		int[] tabCoord = new int[2];
+		switch (direction) {
+		case "z":
+			tabCoord[0] = posX; tabCoord[1] = posY -2;
+			return tabCoord;
+		case "s":
+			tabCoord[0] = posX; tabCoord[1] = posY +2;
+			return tabCoord;
+		case "d":
+			tabCoord[0] = posX+2; tabCoord[1] = posY;
+			return tabCoord;
+		case "q":
+			tabCoord[0] = posX-2; tabCoord[1] = posY;
+			return tabCoord;
+		case "dbd":
+			tabCoord[0] = posX+2; tabCoord[1] = posY+2;
+			return tabCoord;
+		case "dbg":
+			tabCoord[0] = posX-2; tabCoord[1] = posY+2;
+			return tabCoord;
+		case "dhg":
+			tabCoord[0] = posX-2; tabCoord[1] = posY-2;
+			return tabCoord;
+		case "dhd":
+			tabCoord[0] = posX+2; tabCoord[1] = posY-2;
+			return tabCoord;
+		default:
+			return null;
+		}
+	}
+	
+	
 	/**
+	 * Deplace le pion selon une direction (donné en tableau de coordonnées (x, y)
+	 * @param grid un objet de type Grid representant le tableau sur lequel le pion doit se deplacer
+	 * @param tabCoord tableau des coordonnées représentant les coordonnées de l'endroit où le pion va se déplacer
+	 */
+	public boolean move(Grid grid, int[] tabCoord) {
+		if (Rules.rMovePion(tabCoord[0], tabCoord[1]) && !(Rules.rcheckWall(this, tabCoord))) {
+			grid.setItemInGrid(posY, posX, false);
+			posX = tabCoord[0]; posY = tabCoord[1]; /* Je fait la mise à jour ici, parce que vu qu'on appelle stringToCoord d'abord, si je
+			/* 
+			 * Ici, il suffit de changer posX et 
+			 * PosY puisque ça corresond déjà au 
+			 * bonne coordonées.					* fait la mise à jour dans stringToCoord, les coordonées du pion vont directement changer
+			 */
+												   /* et une fois arriver ici, faire grid.setItemInGrid(posY, posX, false); et ennsuite 
+													 * grid.setItemInGrid(posY, posX, true); reviendra à ne rien faire. vider la case du pion
+													 * puis a la remplir... Puisque les coordonées du pion sont changé, dans le premier appel
+													 *  à la méthode les posX et posY sont les même que dans le deuxième appel à setItemInGrid();
+													 */
+			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
+			return true;
+		}else if (Rules.rMovePion(tabCoord[0], tabCoord[1]) && !(Rules.rcheckWall(this, tabCoord))){
+			grid.setItemInGrid(posY, posX, false);
+			posX = tabCoord[0]; posY = tabCoord[1];
+			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	
+	
+	/*
 	 * Deplace le pion selon une direction. Affcihe du texte pour "dd" et "dg"
 	 * @param direction un String ("z", "s", "d", "q") resp. (nord, sud, est, ouest)
 	 * @param grid un objet de type Grid representant le tableau sur lequel le pion doit se deplacer
-	 */
+	 
 	public boolean move(String direction, Grid grid) {
 		
 		//On verra ça plus tard, en gros, ce sont des enchainements de else if plus lisible
@@ -165,6 +235,7 @@ public class Player{
 		//si le gars n a pas saisi la bonne direction
 		return false;
 	}
+	*/
 	
 	/**
 	 * @return numberOfWall un int représentant le nombre de mur restant du joueur courant
