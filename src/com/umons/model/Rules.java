@@ -7,7 +7,7 @@ package com.umons.model;
  *
  */
 public class Rules {
-	//est Parent de Pawn et de Grid
+
 	private static Grid plateau;
 
 	/**
@@ -30,7 +30,6 @@ public class Rules {
 		 * Reprendre la méthode de checkWall...
 		 * Ajouter la validation
 		 */
-		
 		boolean inGrid = (x >= 0 && x < plateau.getLen() && y >= 0 && y < plateau.getLen());
 		if (inGrid) {
 			boolean caseFull = plateau.getItem(y, x).getFull();
@@ -40,15 +39,18 @@ public class Rules {
 		}
 	}
 	
-	
-	
 	/*
-	public static boolean rFaceToFace(int x, int y) {
-		
-	}*/
+	public static boolean rFaceToFace(Player joueur,int[] tabCoord) {
+		//S'il veut se déplacer sur une des case en diagonale
+		if ( Math.abs(joueur.getPawnX() - tabCoord[0]) == 4 && Math.abs(joueur.getPawnY() - tabCoord[1]) == 4 ) {
+			//c'est que la case en face, à côté ou derrière lui est occupé. Vérifié alors que c'est bien le cas
+			int coordObstacleX = (joueur.getPawnX() - tabCoord[0]) + joueur.getPawnX(); //les coordonneés de la case où il est censé
+			int coordObstacleY = (joueur.getPawnY() - tabCoord[1]) + joueur.getPawnY(); //il y avoir un obstacle justifiant le face to face
+			return (plateau.getItem(coordObstacleY, coordObstacleX).getFull() && !());
+		}
+	}
+	*/
 
-	
-	
 	
 	/**
 	 * Vérifie si le mur peut être posé aux coordonées souhaitées
@@ -58,19 +60,22 @@ public class Rules {
 	 * @return un boolean, true si le mur peut potentiellement être posé à cette position, sinon false
 	 */
 	public static boolean rPutWall(String pos, int x, int y) {
-		if (pos.equals("horizontal")) {
+		return ( (pos.equals("horizontal") && x % 2 != 0 && y % 2 == 0) || (pos.equals("vertical") && x % 2 == 0 && y % 2 != 0));
+		/*
+		if (pos.equals("horizontal") ) {
 			if (x % 2 != 0 && y % 2 == 0) {
 				//verifie si le mur n'est pas sur une case
 					return true;
 				}
 				return false;
-		}else {
+		}else if (pos.equals("vertical")){
 			if (x % 2 == 0 && y % 2 != 0) {
 				//verifie si le mur n'est pas sur une case
 				return true;
 			}
 			return false;
 		}
+		*/
 	}
 	
 	/**
@@ -81,7 +86,7 @@ public class Rules {
 	 * @return un boolean, true si le mur peut potentiellement être posé à cette position, sinon false
 	 */
 	public static boolean rSlotFull (String position, int x, int y) {
-		//Pour la verification d'un MUR
+		//Pour la verification de l'éxistence d'un MUR sur un slot déjà occupé
 		if (position.equals("horizontal")) {
 			for (int j = x; j < x + 3; j++) {
 				if (plateau.getItem(y,j).getFull()) {
@@ -106,7 +111,7 @@ public class Rules {
 	 * @return true s'il y a un mur false sinon
 	 */
 	public static boolean rcheckWall(Player joueur, int[] tabCoord) {
-		//Pour la verification d'un PION
+		//Pour la verification d'un mouvement d'un PION sur une case
 		int ytemp = tabCoord[1] - joueur.getPawnY();
 		int xtemp = tabCoord[0] - joueur.getPawnX();
 		ytemp = joueur.getPawnY() + ytemp/2;
