@@ -43,7 +43,7 @@ public class Rules {
 	public static boolean rFaceToFace(Player joueur,int[] tabCoord) {
 		//S'il veut se déplacer sur une des case en diagonale
 		if ( Math.abs(joueur.getPawnX() - tabCoord[0]) == 4 && Math.abs(joueur.getPawnY() - tabCoord[1]) == 4 ) {
-			//c'est que la case en face, à côté ou derrière lui est occupé. Vérifié alors que c'est bien le cas
+			//c'est que la case en face, à côté ou derrière lui est occupé.Ou alors, présence d'un mur !! Vérifié alors que c'est bien le cas
 			int coordObstacleX = (joueur.getPawnX() - tabCoord[0]) + joueur.getPawnX(); //les coordonneés de la case où il est censé
 			int coordObstacleY = (joueur.getPawnY() - tabCoord[1]) + joueur.getPawnY(); //il y avoir un obstacle justifiant le face to face
 			return (plateau.getItem(coordObstacleY, coordObstacleX).getFull() && !());
