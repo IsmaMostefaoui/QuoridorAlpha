@@ -66,9 +66,11 @@ public class Main {
 					posOk = false;
 					tour++;
 				}else if (choix == 2){
-					System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
-					positionWall = sc.nextLine();
+					
 					do {
+						//J'ai mis ça dans la boucle parce que sinon, recommence indefiniment si on se trompe dans le choix de position
+						System.out.print("Joueur 1 ,à vous de jouer. Ou voulez-vous le mettre ? (position) >> ");
+						positionWall = sc.nextLine();
 						do {
 							System.out.print("Position en X (colonne) >> ");
 							x = Integer.parseInt(sc.nextLine());

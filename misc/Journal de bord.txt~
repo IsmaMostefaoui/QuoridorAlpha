@@ -1,0 +1,21 @@
+Jour 1, lun 15 fév 2016 16:44:18 
+
+Création de package model. Celui-ci contient 4 classes : 
+-Grid
+-Pawn
+-RandomIA
+-Square
+-Slot
+-Wall
+
+Grid modélise une grille. On a initialsié une varibale d'instance "plateau" de type "Square" (case) qui modélise une grille du jeu Quoridor. Elle est donc composé d'objets "Square" dans un tableau à double dimension.
+
+Paw est une classe vide.
+
+Square modélise une case. On a initialisé une variable d'instance "busy" de type "boolean". Celle-ci modélise l'état de la case (occupé ou non, par défaut non). 
+
+RandomIA est une classe vide.
+
+Slot modélise une fente. On a initialisé une variable d'instance "full" de type "boolean". Celle-ci modélise l'état de la fente.
+
+Wall est une classe vide.
