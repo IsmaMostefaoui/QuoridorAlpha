@@ -93,6 +93,18 @@ public class Player{
 		case "q":
 			tabCoord[0] = posX-2; tabCoord[1] = posY;
 			return tabCoord;
+		case "zz":
+			tabCoord[0] = posX; tabCoord[1] = posY -4;
+			return tabCoord;
+		case "ss":
+			tabCoord[0] = posX; tabCoord[1] = posY +4;
+			return tabCoord;
+		case "dd":
+			tabCoord[0] = posX+4; tabCoord[1] = posY;
+			return tabCoord;
+		case "qq":
+			tabCoord[0] = posX-4; tabCoord[1] = posY;
+			return tabCoord;
 		case "dbd":
 			tabCoord[0] = posX+2; tabCoord[1] = posY+2;
 			return tabCoord;
@@ -117,7 +129,13 @@ public class Player{
 	 * @param tabCoord tableau des coordonnées représentant les coordonnées de l'endroit où le pion va se déplacer
 	 */
 	public boolean move(Grid grid, int[] tabCoord) {
-		if (Rules.rMovePion(tabCoord[0], tabCoord[1]) && !(Rules.rcheckWall(this, tabCoord))) {
+		if (Rules.rFaceToFace(this, tabCoord)) {
+			grid.setItemInGrid(posY, posX, false);
+			posX = tabCoord[0]; posY = tabCoord[1];
+			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
+			return true;
+			
+		}else if (Rules.rMovePion(tabCoord) && !(Rules.rCheckWall(this, tabCoord))) {
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1]; /* Je fait la mise à jour du pion sur le plateau ici, parce que vu qu'on appelle 
 														stringToCoord avant move dans Main, si je
@@ -131,11 +149,6 @@ public class Player{
 													 * puis a la remplir... Puisque les coordonées du pion sont changé, dans le premier appel
 													 *  à la méthode les posX et posY sont les même que dans le deuxième appel à setItemInGrid();
 													 */
-			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
-			return true;
-		}else if (Rules.rMovePion(tabCoord[0], tabCoord[1]) && !(Rules.rcheckWall(this, tabCoord))){
-			grid.setItemInGrid(posY, posX, false);
-			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
 		}else{

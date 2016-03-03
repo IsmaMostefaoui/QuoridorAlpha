@@ -24,15 +24,14 @@ public class Rules {
 	 * @param y un int représentant les coordonées des lignes
 	 * @return un boolean vrai si le pion peut bouger, faux sinon
 	 */
-	public static boolean rMovePion(int x, int y) {
-		/*
-		 * A changer ! TODO 
+	public static boolean rMovePion(int [] tabCoord) {
+		/* 
 		 * Reprendre la méthode de checkWall...
 		 * Ajouter la validation
 		 */
-		boolean inGrid = (x >= 0 && x < plateau.getLen() && y >= 0 && y < plateau.getLen());
+		boolean inGrid = (tabCoord[0] >= 0 && tabCoord[0] < plateau.getLen() && tabCoord[1] >= 0 && tabCoord[1] < plateau.getLen());
 		if (inGrid) {
-			boolean caseFull = plateau.getItem(y, x).getFull();
+			boolean caseFull = plateau.getItem(tabCoord[1], tabCoord[0]).getFull();
 			return !(caseFull);
 		}else {
 			return false;
@@ -50,6 +49,14 @@ public class Rules {
 		}
 	}
 	*/
+	public static boolean rFaceToFace (Player joueur, int[] tabCoord) {
+		int xtemp = (tabCoord[0] - joueur.getPawnX()) / 2 + joueur.getPawnX();
+		int ytemp = (tabCoord[1] - joueur.getPawnY()) / 2 + joueur.getPawnY();
+		return (rCheckWall(joueur,tabCoord) && !rMovePion(tabCoord));
+			
+	}
+	
+	
 
 	
 	/**
@@ -110,13 +117,19 @@ public class Rules {
 	 * @param tabCoord un tableau de type int contenant les coordonées (x, y) correspondant à la position ou le pion compte se rendre
 	 * @return true s'il y a un mur false sinon
 	 */
-	public static boolean rcheckWall(Player joueur, int[] tabCoord) {
-		//Pour la verification d'un mouvement d'un PION sur une case
+	public static boolean rCheckWall(Player joueur, int[] tabCoord) {
+		
 		int ytemp = tabCoord[1] - joueur.getPawnY();
 		int xtemp = tabCoord[0] - joueur.getPawnX();
-		ytemp = joueur.getPawnY() + ytemp/2;
-		xtemp = joueur.getPawnX() + xtemp/2;
-		return plateau.getItem(ytemp, xtemp).getFull();
+		if (Math.abs(xtemp) == 2 || Math.abs(ytemp) == 2) {
+			ytemp = joueur.getPawnY() + ytemp/2;
+			xtemp = joueur.getPawnX() + xtemp/2;
+			return plateau.getItem(ytemp, xtemp).getFull();
+		}else {
+			ytemp = joueur.getPawnY() + ytemp/2 + 1;
+			xtemp = joueur.getPawnX() + xtemp/2 + 1;
+			return plateau.getItem(ytemp, xtemp).getFull();
+		}
 	}
 }	
 
