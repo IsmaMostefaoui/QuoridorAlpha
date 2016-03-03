@@ -124,31 +124,27 @@ public class Player{
 	
 	
 	/**
+	 * ######ERROR####
+	 *  Erreur lorque que l'on 'saute' en dehors du plateau, erreur
+	 *  crée par la methode stringToCoord().
+	 *  ####Fin Error#######
 	 * Deplace le pion selon une direction (donné en tableau de coordonnées (x, y))
 	 * @param grid un objet de type Grid representant le tableau sur lequel le pion doit se deplacer
 	 * @param tabCoord tableau des coordonnées représentant les coordonnées de l'endroit où le pion va se déplacer
 	 */
 	public boolean move(Grid grid, int[] tabCoord) {
-		if (Rules.rFaceToFace(this, tabCoord)) {
+		int[] tabDep = Rules.rDeplacement(this, tabCoord);
+		if ((tabDep[0] == 4 || tabDep[1] == 4) && (Rules.rFaceToFace(this, tabCoord))) {
+			System.out.println("" + tabDep[0] + tabDep[1]);
+			System.out.println("" + Rules.rFaceToFace(this, tabCoord));
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
 			
-		}else if (Rules.rMovePion(tabCoord) && !(Rules.rCheckWall(this, tabCoord))) {
+		}else if (Rules.rMovePion(tabCoord) && !(Rules.rCheckWall(this.posX, this.posY , tabCoord)) && (tabDep[0] == 2 || tabDep[1] == 2)) {
 			grid.setItemInGrid(posY, posX, false);
-			posX = tabCoord[0]; posY = tabCoord[1]; /* Je fait la mise à jour du pion sur le plateau ici, parce que vu qu'on appelle 
-														stringToCoord avant move dans Main, si je
-			/* 										 * fait la mise à jour dans stringToCoord, les coordonées du pion vont directement changer
-			 * Ici, il suffit de changer posX et 
-			 * PosY puisque ça corresond déjà au 
-			 * bonne coordonées.					
-			 */
-												   /* et une fois arriver ici, faire grid.setItemInGrid(posY, posX, false); et ennsuite 
-													 * grid.setItemInGrid(posY, posX, true); reviendra à vider la case du pion
-													 * puis a la remplir... Puisque les coordonées du pion sont changé, dans le premier appel
-													 *  à la méthode les posX et posY sont les même que dans le deuxième appel à setItemInGrid();
-													 */
+			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
 		}else{

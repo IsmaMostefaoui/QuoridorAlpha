@@ -29,14 +29,38 @@ public class Rules {
 		 * Reprendre la méthode de checkWall...
 		 * Ajouter la validation
 		 */
-		boolean inGrid = (tabCoord[0] >= 0 && tabCoord[0] < plateau.getLen() && tabCoord[1] >= 0 && tabCoord[1] < plateau.getLen());
-		if (inGrid) {
+		if (rStillInGrid(tabCoord)) {
 			boolean caseFull = plateau.getItem(tabCoord[1], tabCoord[0]).getFull();
 			return !(caseFull);
 		}else {
 			return false;
 		}
 	}
+	
+	
+	/**
+	 * vérifie si le pion ne sort pas de la grille
+	 * @param tabCoord la future position du pion
+	 * @return true si le déplacement est autorisé,sinon false
+	 */
+	public static boolean rStillInGrid(int[] tabCoord) {
+		boolean inGrid = (tabCoord[0] >= 0 && tabCoord[0] < plateau.getLen() && tabCoord[1] >= 0 && tabCoord[1] < plateau.getLen());
+		return inGrid;
+	}
+	
+	/**
+	 * 
+	 * @param joueur une instance de Player
+	 * @param tabCoord un Tableau de coordonnée provenant de la Méthode StringToCoord()
+	 * @return un tableau comprenant la 'distance' entre la position actuelle du pion en la position souhaitée
+	 */
+	public static int[] rDeplacement(Player joueur, int[] tabCoord) {
+		int xtemp = Math.abs(tabCoord[0] - joueur.getPawnX());
+		int ytemp = Math.abs(tabCoord[1] - joueur.getPawnY());
+		int[] tabDeplacement = { xtemp, ytemp };
+		return tabDeplacement;
+	} 
+		
 	
 	/*
 	public static boolean rFaceToFace(Player joueur,int[] tabCoord) {
@@ -52,7 +76,10 @@ public class Rules {
 	public static boolean rFaceToFace (Player joueur, int[] tabCoord) {
 		int xtemp = (tabCoord[0] - joueur.getPawnX()) / 2 + joueur.getPawnX();
 		int ytemp = (tabCoord[1] - joueur.getPawnY()) / 2 + joueur.getPawnY();
-		return (rCheckWall(joueur,tabCoord) && !rMovePion(tabCoord));
+		boolean verif1 = !rCheckWall(xtemp, ytemp, tabCoord);
+		boolean verif2 = rStillInGrid(tabCoord);
+		boolean verif3 = plateau.getItem(ytemp, xtemp).getFull();
+		return (verif1 && verif2 && verif3);
 			
 	}
 	
@@ -117,20 +144,16 @@ public class Rules {
 	 * @param tabCoord un tableau de type int contenant les coordonées (x, y) correspondant à la position ou le pion compte se rendre
 	 * @return true s'il y a un mur false sinon
 	 */
-	public static boolean rCheckWall(Player joueur, int[] tabCoord) {
+	public static boolean rCheckWall(int xPion, int yPion, int[] tabCoord) {
 		
-		int ytemp = tabCoord[1] - joueur.getPawnY();
-		int xtemp = tabCoord[0] - joueur.getPawnX();
-		if (Math.abs(xtemp) == 2 || Math.abs(ytemp) == 2) {
-			ytemp = joueur.getPawnY() + ytemp/2;
-			xtemp = joueur.getPawnX() + xtemp/2;
-			return plateau.getItem(ytemp, xtemp).getFull();
-		}else {
-			ytemp = joueur.getPawnY() + ytemp/2 + 1;
-			xtemp = joueur.getPawnX() + xtemp/2 + 1;
-			return plateau.getItem(ytemp, xtemp).getFull();
+		int ytemp = tabCoord[1] - yPion;
+		int xtemp = tabCoord[0] - xPion;
+		ytemp = yPion + ytemp/2;
+		xtemp = xPion + xtemp/2;
+		return plateau.getItem(ytemp, xtemp).getFull();
+	
 		}
 	}
-}	
+	
 
 	
