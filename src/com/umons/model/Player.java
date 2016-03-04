@@ -124,25 +124,19 @@ public class Player{
 	
 	
 	/**
-	 * ######ERROR####
-	 *  Erreur lorque que l'on 'saute' en dehors du plateau, erreur
-	 *  crée par la methode stringToCoord().
-	 *  ####Fin Error#######
 	 * Deplace le pion selon une direction (donné en tableau de coordonnées (x, y))
 	 * @param grid un objet de type Grid representant le tableau sur lequel le pion doit se deplacer
 	 * @param tabCoord tableau des coordonnées représentant les coordonnées de l'endroit où le pion va se déplacer
 	 */
 	public boolean move(Grid grid, int[] tabCoord) {
 		int[] tabDep = Rules.rDeplacement(this, tabCoord);
-		if ((tabDep[0] == 4 || tabDep[1] == 4) && (Rules.rFaceToFace(this, tabCoord))) {
-			System.out.println("" + tabDep[0] + tabDep[1]);
-			System.out.println("" + Rules.rFaceToFace(this, tabCoord));
+		if ((tabDep[0] == 4 || tabDep[1] == 4) && Rules.rFaceToFace(this, tabCoord)) {
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
 			
-		}else if (Rules.rMovePion(tabCoord) && !(Rules.rCheckWall(this.posX, this.posY , tabCoord)) && (tabDep[0] == 2 || tabDep[1] == 2)) {
+		}else if ((tabDep[0] == 2 || tabDep[1] == 2) && Rules.rMovePion(this, tabCoord)) {
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
