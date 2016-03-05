@@ -76,6 +76,7 @@ public class Player{
 	 * Transforme des entrées "direction" en coordonées (x, y) sur le plateau
 	 * @param direction un String correspondant à la direction entré par le joueur ("z", "q", etc...)
 	 * @return un tableau de int correspondant aux coordonnées (x, y) de la case où le joueur veut déplacer son pion
+	 * 		   si peux pas, retourne null
 	 */
 	public int[] stringToCoord(String direction) {
 		// tableau de la forme {x, y}
@@ -130,17 +131,24 @@ public class Player{
 	 */
 	public boolean move(Grid grid, int[] tabCoord) {
 		int[] tabDep = Rules.rDeplacement(this, tabCoord);
+		if (tabDep[0] > 4 || tabDep[1] > 4) { return false; } //si l'utilisateur clique sur une  des case en dehors du carré autour du pion.
 		if ((tabDep[0] == 4 || tabDep[1] == 4) && Rules.rFaceToFace(this, tabCoord)) {
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
-			
-		}else if ((tabDep[0] == 2 || tabDep[1] == 2) && Rules.rMovePion(this, tabCoord)) {
+		
+		}else if ((tabDep[0] == 2 ^ tabDep[1] == 2) && Rules.rMovePion(this, tabCoord)) {	
 			grid.setItemInGrid(posY, posX, false);
 			posX = tabCoord[0]; posY = tabCoord[1];
 			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
 			return true;
+		}else if (tabDep[0] == 2 && tabDep[1] == 2 && Rules.rDiagFace(this, tabCoord)) {
+			grid.setItemInGrid(posY, posX, false);
+			posX = tabCoord[0]; posY = tabCoord[1];
+			grid.setItemInGrid(tabCoord[1], tabCoord[0], true);
+			return true;	
+			
 		}else{
 			return false;
 		}

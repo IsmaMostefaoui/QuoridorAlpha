@@ -13,6 +13,7 @@ public class Grid {
 	//Herite des methodes de Rules
 
 	private Item[][] plateau;
+	//ici aussi declarer les joueur car on les utilise plusieurs fois
 	
 	public Grid() {
 		//CONSTRUCTEUR PAR DEFAUT
@@ -94,6 +95,18 @@ public class Grid {
 		System.out.println("    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
 	}
 	
+	public boolean win(Player joueur1, Player joueur2)  {
+		if (joueur1.getPawnY() == 1) {
+			System.out.println("Joueur 1 vous avez gagné !!");
+			return true;
+		}else if (joueur1.getPawnY() == 17){
+			System.out.println("Joueur 2 vous avez gagné !!");
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	/**
 	 * Rempli ou non  la case (ATTENTION, à ne pas confondre avec (x, y)
 	 * @param i est la ligne
@@ -122,4 +135,6 @@ public class Grid {
 	public Item getItem(int i, int j) {
 		return plateau[i][j];
 	}
+	
+	
 }

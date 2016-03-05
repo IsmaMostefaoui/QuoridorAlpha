@@ -122,14 +122,10 @@ public class Main {
 					plateau.afficheGrid(joueur1, joueur2);
 					wallOk = false;
 					tour--;
-					}
-				
-			if (status == "yes")
-				stop = true;
-			else
-				stop = false;
+				}
 			}
-		}while (!stop);
+		System.out.println(plateau.win(joueur1, joueur2));
+		}while (!plateau.win(joueur1, joueur2));
 	
 	}
 }
