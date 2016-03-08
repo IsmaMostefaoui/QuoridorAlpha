@@ -84,7 +84,7 @@ public class Rules {
 		//ici, directement tester que tabcoord n'est pas hors indice, ca evite des test inutile
 		int xtemp = (tabCoord[0] - joueur.getPawnX()) / 2 + joueur.getPawnX();
 		int ytemp = (tabCoord[1] - joueur.getPawnY()) / 2 + joueur.getPawnY();
-		return (rStillInGrid(xtemp, ytemp) && !rCheckWall(xtemp, ytemp, tabCoord) && plateau.getItem(ytemp, xtemp).getFull());
+		return (rStillInGrid(xtemp, ytemp) && rStillInGrid(tabCoord[0], tabCoord[1]) && !rCheckWall(xtemp, ytemp, tabCoord) && plateau.getItem(ytemp, xtemp).getFull());
 			
 	}
 	
@@ -195,7 +195,10 @@ public class Rules {
 	 * @return true s'il y a un mur false sinon
 	 */
 	public static boolean rCheckWall(int xPion, int yPion, int x, int y) {
-		if (rStillInGrid(x, y)) {
+		if (rStillInGrid(x, y)) { //ATTENTIO, quand on regarde s'il n'y a pas de mur, on ne regarde plus si la postion est dans la grille
+								  // car quand on fait !rChecWall(), on aura vrai si l'item est vide en position ytemp et xtemp
+								  // mais on a aussi vrai quand rStillInGrid(x, y) retourne faux, et qu'on entre pas de le if !!!
+								  // a regler urgent !
 			int ytemp = y - yPion;
 			int xtemp = x - xPion; // inutile non ? Puisque c'est le meme calcul que dans facetoface
 			ytemp = yPion + ytemp/2; // mettre un test de stillingrid des qu'un param peut potentielment nous causer probleme

@@ -99,7 +99,7 @@ public class Grid {
 		if (joueur1.getPawnY() == 1) {
 			System.out.println("Joueur 1 vous avez gagné !!");
 			return true;
-		}else if (joueur1.getPawnY() == 17){
+		}else if (joueur2.getPawnY() == 17){
 			System.out.println("Joueur 2 vous avez gagné !!");
 			return true;
 		}else {

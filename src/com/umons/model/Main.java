@@ -124,7 +124,6 @@ public class Main {
 					tour--;
 				}
 			}
-		System.out.println(plateau.win(joueur1, joueur2));
 		}while (!plateau.win(joueur1, joueur2));
 	
 	}
